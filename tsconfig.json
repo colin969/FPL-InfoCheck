@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": ["ES2015"],
+    "module": "commonjs",
+    "outDir": "./dist",
+  },
+  "exclude": [
+    "./dist"
+  ],
+  "include": [
+    "./typings",
+    "./src"
+  ]
+}
