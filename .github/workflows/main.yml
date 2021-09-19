@@ -43,24 +43,31 @@ jobs:
            echo ::set-env name=GHA_REPO_ALIVE::true
         fi
       shell: bash
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     
     - name: Get current time
       uses: 1466587594/get-current-time@v2
       id: current_time_dashes
       with:
         format: YYYY-MM-DD
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
     - name: Get current time with underscores
       uses: 1466587594/get-current-time@v2
       id: current_time_underscores
       with:
         format: YYYY_MM_DD
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         
     - name: Create release
       if: env.GHA_REPO_ALIVE == 'true'
       id: create_release
       uses: actions/create-release@v1
       env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: nightly-${{ steps.current_time_dashes.outputs.formattedTime }}
