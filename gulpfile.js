@@ -31,13 +31,13 @@ function build(cb) {
 function stage() {
     const streams = filesToCopy.map(file => {
         if (fs.existsSync(file)) {
-            return gulp.src(file).pipe(gulp.dest('package/analytics'));
+            return gulp.src(file).pipe(gulp.dest('package/infocheck'));
         }
     }).filter(s => s != undefined);
     return merge([
         ...streams,
-        gulp.src('dist/**/*').pipe(gulp.dest('package/analytics/dist')),
-        gulp.src('static/**/*').pipe(gulp.dest('package/analytics/static')),
+        gulp.src('dist/**/*').pipe(gulp.dest('package/infocheck/dist')),
+        gulp.src('static/**/*').pipe(gulp.dest('package/infocheck/static')),
     ]);
 }
 
